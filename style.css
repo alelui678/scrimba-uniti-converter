@@ -17,6 +17,7 @@
   --text-dark:#111111;
   --h2:#d9d8ff;
   --btn-shadow: 0 6px 0 rgba(0,0,0,0.15);
+  --btn-shadow-hover: 0 10px 14px rgba(0,0,0,0.18);
 }
 
 html,body{
@@ -98,6 +99,17 @@ body{
   cursor:pointer;
   font-size:16px;
   box-shadow:var(--btn-shadow);
+  transition: transform 160ms ease, box-shadow 160ms ease;
+}
+
+.btn:hover{
+  transform: translateY(-4px);
+  box-shadow: var(--btn-shadow-hover);
+}
+
+.btn:active{
+  transform: translateY(-1px);
+  box-shadow: var(--btn-shadow);
 }
 
 .results{

@@ -10,10 +10,14 @@
 
 const selectedVal = document.querySelector(".input-display");
 const convertionBtn = document.querySelector(".btn");
-const resultSection = document.querySelector(".results");
+const appEl = document.querySelector(".app");
 
 convertionBtn.addEventListener("click", function() {
-    resultSection.innerHTML = "";
+    if (selectedVal.value === "" || isNaN(selectedVal.value) || Number(selectedVal.value) <= 0) {
+        alert("Please enter a valid number above zero.");
+        appEl.querySelector(".results")?.remove();
+        return;
+    }
     const resObj = converter(selectedVal.value);
     renderResults(resObj);
 });
@@ -50,6 +54,15 @@ function converter(num) {
 
 
 function renderResults(resObj) {
+    // Remove previous results
+    const previousResults = document.querySelector(".results");
+    if (previousResults) {
+        appEl.removeChild(previousResults);
+    }
+    const resultSection = document.createElement("section");
+    resultSection.classList.add("results");
+    appEl.appendChild(resultSection);
+
     resultSection.innerHTML = `
         <section class="results">
             <div class="card">
