@@ -25,8 +25,8 @@ convertionBtn.addEventListener("click", function() {
 function converter(num) {
     const _num = Number(num);
     const meterCoeff = 3.281;
-    const kiloCoeff = 2.204;
     const literCoeff = 0.264;
+    const kiloCoeff = 2.204;
 
     const obj = {
         valInserted: _num,
@@ -38,10 +38,10 @@ function converter(num) {
         rsultsVals:{
             feetRes: (_num * meterCoeff).toFixed(3),
             meterRes: (_num / meterCoeff).toFixed(3),
-            kiloRes: (_num * kiloCoeff).toFixed(3),
-            poundRes: (_num / kiloCoeff).toFixed(3),
-            literRes: (_num * literCoeff).toFixed(3),
-            gallonRes: (_num / literCoeff).toFixed(3)
+            gallonRes: (_num * literCoeff).toFixed(3),
+            literRes: (_num / literCoeff).toFixed(3),
+            poundRes: (_num * kiloCoeff).toFixed(3),
+            kiloRes: (_num / kiloCoeff).toFixed(3)
         },
         labels: {
             length: "Length (Meter/Feet)",
@@ -82,7 +82,7 @@ function renderResults(resObj) {
             <div class="card">
                 <h2>${resObj.labels.mass}</h2>
                 <p class="desc">
-                    <span>${resObj.valInserted} kilos = ${resObj.rsultsVals.kiloRes} pounds | ${resObj.valInserted} pounds = ${resObj.rsultsVals.poundRes} kilos</span>
+                    <span>${resObj.valInserted} kilos = ${resObj.rsultsVals.poundRes} pounds | ${resObj.valInserted} pounds = ${resObj.rsultsVals.kiloRes} kilos</span>
                 </p>
             </div>
         </section>
